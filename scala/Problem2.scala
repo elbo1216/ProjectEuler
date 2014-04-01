@@ -3,5 +3,20 @@
   *              1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
   * By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 **/
+def addNextFib(seq: Seq[Int]): Seq[Int] = {
+  seq.size match {
+    case 0 => Seq(1)
+    case 1 => Seq(1,2)
+    case size => seq ++ Seq(seq(size-2) + seq(size-1))
+  }
+}
 
-// vim: set ts=4 sw=4 et:
+var seq:Seq[Int] = Seq(1)
+var size = 2
+ while (seq.last < 4000000) {
+  seq = addNextFib(seq)
+  size = size + 1
+}
+seq = seq.dropRight(1)
+val sum = seq.filter(_ % 2 == 0).sum
+println(sum)
