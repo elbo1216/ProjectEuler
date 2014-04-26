@@ -7,4 +7,12 @@
   *  Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
 **/
 
-// vim: set ts=4 sw=4 et:
+def sumOfSquare(list: List[Int]): Long = list.map( i => i * i).sum
+
+def squareOfSum(list: List[Int]): Long = {
+  val total = list.sum
+  total * total
+}
+
+val list = (1 to 100).toList
+println(squareOfSum(list) - sumOfSquare(list))
